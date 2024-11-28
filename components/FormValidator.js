@@ -20,7 +20,7 @@ class FormValidator {
     const errorElement = this._formEl.querySelector(errorElementId);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
-    errorElement.textContent = errorElement;
+    errorElement.textContent = inputElement.validationMessage;
   }
   _hideInputError(inputElement) {
     const errorElementId = `#${inputElement.id}-error`;
@@ -76,6 +76,7 @@ class FormValidator {
 
   resetValidation() {
     this._formEl.reset();
+    this._submitButtonSelector.classList.add(this._inactiveButtonClass);
     this._submitButtonSelector.disabled = true;
   }
 }
